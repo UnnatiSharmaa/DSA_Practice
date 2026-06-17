@@ -3,14 +3,12 @@ class Solution {
         int count =0;
         for(int i=0;i<words.length;i++){
             for(int j=i+1;j<words.length;j++){
-                if(rev(words[i]).equals(words[j])){
+                if(words[i].equals(new StringBuilder(words[j]).reverse().toString())){
                     count++;
                 }
             }
         }
         return count;
     }
-    public String rev(String s){
-       return new StringBuilder(s).reverse().toString();
-    }
+    
 }
