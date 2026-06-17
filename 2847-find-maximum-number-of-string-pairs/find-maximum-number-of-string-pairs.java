@@ -1,11 +1,14 @@
 class Solution {
     public int maximumNumberOfStringPairs(String[] words) {
-        int count =0;
-        for(int i=0;i<words.length;i++){
-            for(int j=i+1;j<words.length;j++){
-                if(words[i].equals(new StringBuilder(words[j]).reverse().toString())){
-                    count++;
-                }
+          Set<String> set = new HashSet<>();
+        int count = 0;
+        for (String w : words) {
+            String rev = new StringBuilder(w).reverse().toString();
+            if (set.contains(rev)) {
+                count++;
+                set.remove(rev); // ensure ek word ek hi pair mein aaye
+            } else {
+                set.add(w);
             }
         }
         return count;
