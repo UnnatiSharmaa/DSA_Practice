@@ -1,15 +1,14 @@
 class Solution {
     public int maxProduct(int[] nums) {
-        long max=Integer.MIN_VALUE;
+        long maxpro=Integer.MIN_VALUE;
         long prefix=1;
+        
         long suffix=1;
+
         for(int i=0;i<nums.length;i++){
-            
             prefix=prefix*nums[i];
-            
-            
             suffix=suffix*nums[nums.length-1-i];
-            max=Math.max(max,Math.max(prefix,suffix));
+            maxpro=Math.max(maxpro,Math.max(suffix,prefix));
             if(prefix==0){
                 prefix=1;
             }
@@ -17,7 +16,6 @@ class Solution {
                 suffix=1;
             }
         }
-        return (int)max;
-        
+        return (int)maxpro;
     }
 }
