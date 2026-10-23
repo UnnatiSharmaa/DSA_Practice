@@ -2,16 +2,16 @@ class Solution {
     public void reorderList(ListNode head) {
         if (head == null || head.next == null) return;
 
-        // Step 1: Find middle
+        
         ListNode slow = head, fast = head;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
 
-        // Step 2: Reverse second half
+        
         ListNode prev = null, curr = slow.next;
-        slow.next = null; // cut the list into two halves
+        slow.next = null; 
         while (curr != null) {
             ListNode nextTemp = curr.next;
             curr.next = prev;
@@ -19,7 +19,7 @@ class Solution {
             curr = nextTemp;
         }
 
-        // Step 3: Merge two halves
+        
         ListNode first = head, second = prev;
         while (second != null) {
             ListNode temp1 = first.next;
