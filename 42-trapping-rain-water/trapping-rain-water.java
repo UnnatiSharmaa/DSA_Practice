@@ -1,6 +1,5 @@
 class Solution {
     public int trap(int[] height) {
-        int maxleft=Integer.MIN_VALUE;
         int leftmax[]=new int[height.length];
         leftmax[0]=height[0];
         for(int i=1;i<height.length;i++){
@@ -11,11 +10,12 @@ class Solution {
         for(int i=height.length-2;i>=0;i--){
             rightmax[i]=Math.max(height[i],rightmax[i+1]);
         }
-        int trapped_water=0;
+        int trapped=0;
+        int waterlevel=0;
         for(int i=0;i<height.length;i++){
-            int waterlevel=Math.min(leftmax[i],rightmax[i]);
-            trapped_water +=waterlevel-height[i];
+            waterlevel=Math.min(leftmax[i],rightmax[i]);
+            trapped+=waterlevel-height[i];
         }
-        return trapped_water;
+        return trapped;
     }
 }
